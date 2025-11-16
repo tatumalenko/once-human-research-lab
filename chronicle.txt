@@ -1,0 +1,174 @@
+# SECTION_ID: TEMPLATE_TAB
+======================
+### STRUCTURED DISCOVERY ENTRY TEMPLATE (SYSTEM PARSING SCHEMA)
+Each verified discovery entry must strictly follow this structure.
+All fields are plain text with clear labels for reliable machine parsing.
+======================
+
+TEMPLATE_START
+
+### Discovery Log Entry
+Date: [YYYY-MM-DD HH:MM UTC]
+Patch Version: [Version or build number]
+Scenario: [SCP / Classic / Manibus / Other]
+Subject: [Mechanic or Deviation Name]
+
+Verified Finding:
+[Short factual statement of what is proven, not inferred. No rich text.]
+
+Confidence: [High / Medium / Low] (Score: [0–100])
+Sources:
+- [Source 1 – title, link, language, publish date]
+- [Source 2 – title, link, publish date]
+
+Notes:
+- Structural/Temporal Context:
+- Validation Method:
+- Conflicts/Alternatives:
+- Next Verification Target:
+
+======================
+OPTIONAL: SUSPENSION_POINT_PACKET
+Include this block when ending a testing session mid-investigation.
+It allows the GPT to resume the exact research context in the next session.
+
+SUSPENSION_POINT_PACKET
+date=[YYYY-MM-DD HH:MM UTC]
+focus=[short topic title, e.g. 'SCP Trait-slot Mapping']
+open_questions=[
+ "Question 1?",
+ "Question 2?",
+ "Question 3?"
+]
+recommended_resume_query="[natural language query to continue investigation]"
+session_super_packet=SCP_SUPER_PACKET_V1.0
+======================
+
+TEMPLATE_END
+
+---
+
+# SECTION_ID: DISCOVERY_LOG
+
+### Discovery Log Entry
+Date: 2025-11-17 00:32 UTC
+Patch Version: SCP Scenario – Release Branch (v0.25.6, validated 2025-11)
+Scenario: SCP – Survive, Capture, Preserve
+Subject: Rebecca – Availability, Acquisition Route, and Fusion Behavior
+
+Verified Finding:
+Rebecca does not appear in the wild and is not obtainable through any classic Once Human structures. All community claims tying Rebecca to LEA Research Lab, Monolith dungeons, Securement Silos, or boss-based deviation drops are structurally invalid for SCP because these structures do not exist in this scenario. SCP replaces all classic deviation acquisition systems with wild capture mechanics, Chaos Leader Arenas, Species Codes, Mutagen crafting, and Fusion.
+
+Rebecca is exclusively obtained through the Species Code → Species Mutagen → Fusion pipeline. Her Species Code is purchased from a Chaos Leader Arena Shop using Chaos Coins. Arena Shops are accessible in SCP after locating Chaos Leaders; coins are earned through defeating these Leaders. Once purchased, the Species Code is refined at the Synthesis Bench into Species Mutagen – Rebecca using crystals (any of the valid SCP crystal types), Stardust Source, and Rubber. This Species Mutagen forcibly injects Rebecca as the dominant fusion outcome regardless of parent species. Parent deviations and fusion materials contribute only to trait and active skill inheritance and do not overturn the species outcome when a Species Mutagen is used.
+
+Ultimate skills and passives are species-defined and do not change through fusion. Active skills are inheritable only if they are compatible with Rebecca’s species-defined skill pool. Traits can be inherited in ranges of 0–3, with tiered families (e.g., Optimist 1–5). SCP-only combat traits such as “Attack +X in SCP” exist but their trait-slot assignment remains unverified. Mood and Deviant Power references in trait descriptions originate from classic scenario logic; there is currently no verified relationship between these values and Psi generation or skill cooldowns in SCP.
+
+Confidence: High (90/100) for all structural elements and acquisition route; Medium (70/100) for inheritance edge cases; Unverified (—) for SCP-specific trait-slot assignment and Mood/Deviant Power combat interactions.
+
+Sources:
+- Direct in-game SCP scenario testing and screenshots (user)
+- Chaos Leader Arena and Species Code purchase observations
+- Synthesis Bench Species Mutagen crafting interface
+- Fusion outcome tests with multiple parent/material configurations
+- Doomeris trait documentation (cross-referenced where applicable)
+- CN/KR community SCP fusion behavior summaries
+
+Notes:
+- Structural impossibility of classic dungeon routes has been validated through scenario-level feature removal in SCP.
+- Trait-slot mapping for SCP-only traits and any link between Mood/Deviant Power and Psi or cooldown behavior remain open questions pending controlled testing.
+
+--- 
+
+# SECTION_ID: SESSION_CONTINUITY_SYSTEM
+
+This section stores the permanent methodological framework and restoration packets
+for Once Human Research Lab. It is semi-static—update only when a new packet version
+is issued. The GPT will reference this section only for framework recovery and
+session resumption; it will never modify verified findings above.
+
+----------------------
+RESURRECTION_PACKET_V1.1
+(last_update=2025-11-17, compatible_with=Chronicle_Template_v2.0)
+
+Purpose:
+Restores the full Once Human SCP Deviation Research Framework, methodology, and
+analysis constraints in any new session. Paste at the start of a new chat to reload
+behavioral context.
+
+[RESURRECTION_PACKET_V1.1]
+1. PROJECT: SCP DEVIATION RESEARCH FRAMEWORK
+   – Analyzes Once Human SCP mechanics using verified, source-ranked, uncertainty-
+     annotated methods. Rebecca is the baseline case.
+2. ABSOLUTE RULES OF ANALYSIS
+   – No inference without evidence.
+   – Structural validation first.
+   – Category separation: Ultimate ≠ Active ≠ Passive ≠ Trait.
+   – Trait rules: 0–3 slots, tiered families (Optimist 1–5), not EXP-leveled.
+   – Evidence hierarchy: user > Doomeris > CN/KR/JP empirical > EN community > creators.
+   – Uncertainty protocol: CONFIRMED / PARTIAL / UNVERIFIED / STRUCTURALLY IMPOSSIBLE.
+3. SCP-SPECIFIC CONSTRAINTS
+   – Do not assume Mood/Deviant Power mechanics unless proven.
+   – Classic recharge logic not applicable in SCP.
+4. FUSION MODEL STATUS
+   – Confirmed: Species Mutagen overrides species; Ultimate & passive locked.
+   – Open: trait-slot mapping, Mood–Psi interactions.
+5. COMMUNICATION RULES
+   – No fluff, opinions, or metaphors; clarify evidence tier always.
+6. DELIVERABLE STANDARD
+   – Each Chronicle entry: timestamp, patch, scenario, subject, findings,
+     confidence, evidence sources, notes, and optional Suspension Point.
+7. SYNCHRONIZATION
+   – Always check Once Human Discovery Chronicle before new analysis.
+   – Use ISO 8601 UTC timestamps in all outputs.
+
+----------------------
+SHORTHAND_METADATA_V1.0
+(last_update=2025-11-17)
+
+[SCP-META]
+scenario=SCP
+project=SCP Deviation Research
+mode=forensic_mechanics
+taxonomy_strict=true
+no_inference=true
+evidence_hierarchy=true
+categorical_separation=ultimate/active/passive/trait
+trait_slots=0-3
+trait_slot_mapping_SCP=UNVERIFIED
+active_skill_inheritance=ENABLED
+ultimate_inheritance=DISABLED
+passive_inheritance=DISABLED
+species_mutagen=OVERRIDES_SPECIES_RESULT
+material_species_bias=MINOR
+classic_mechanics_import=DISALLOWED
+uncertainty_protocol=STRICT
+fusion_outcome_validation=REQUIRED
+skill_pool_model=PER_SPECIES
+analysis_output=chronicle_ready
+timestamp_format=ISO8601_UTC
+chronicle_sync=ENABLED
+
+----------------------
+SCP_SUPER_PACKET_V1.0
+(last_update=2025-11-17)
+
+[SCP_SUPER_PACKET_V1.0]
+includes=Resurrection_Packet_V1.1,Metadata_V1.0,Chronicle_Sync
+auto_timestamp=enabled
+default_confidence_system=DRSM
+chronicle_reference=Once_Human_Discovery_Chronicle
+template_validation=v2.0
+mode=live_verification
+template_enforcement=true
+context_scope=SCP_only
+resume_system=Suspension_Point_Enabled
+======================
+
+
+
+
+
+
+
+
+
