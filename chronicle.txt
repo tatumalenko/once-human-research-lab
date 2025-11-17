@@ -87,7 +87,7 @@ session resumption; it will never modify verified findings above.
 
 ----------------------
 RESURRECTION_PACKET_V1.1
-(last_update=2025-11-17, compatible_with=Chronicle_Template_v2.0)
+(last_update=2025-11-17)
 
 Purpose:
 Restores the full Once Human SCP Deviation Research Framework, methodology, and
