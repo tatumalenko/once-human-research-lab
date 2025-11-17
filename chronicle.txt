@@ -1,22 +1,20 @@
-# SECTION_ID: TEMPLATE_TAB
-======================
-### STRUCTURED DISCOVERY ENTRY TEMPLATE (SYSTEM PARSING SCHEMA)
+# SECTION_ID: DISCOVERY_LOG_SCHEMA
+
+<DISCOVERY_LOG_SCHEMA>
+<DESCRIPTION>
 Each verified discovery entry must strictly follow this structure.
 All fields are plain text with clear labels for reliable machine parsing.
-======================
-
-TEMPLATE_START
-
-### Discovery Log Entry
+</DESCRIPTION>
 Date: [YYYY-MM-DD HH:MM UTC]
 Patch Version: [Version or build number]
 Scenario: [SCP / Classic / Manibus / Other]
 Subject: [Mechanic or Deviation Name]
 
-Verified Finding:
-[Short factual statement of what is proven, not inferred. No rich text.]
+Verified Findings:
+- [Short factual statements of what is proven, not inferred. No rich text.]
 
 Confidence: [High / Medium / Low] (Score: [0–100])
+
 Sources:
 - [Source 1 – title, link, language, publish date]
 - [Source 2 – title, link, publish date]
@@ -26,13 +24,13 @@ Notes:
 - Validation Method:
 - Conflicts/Alternatives:
 - Next Verification Target:
+</DISCOVERY_LOG_SCHEMA>
 
-======================
-OPTIONAL: SUSPENSION_POINT_PACKET
+<SUSPENSION_POINT_PACKET_SCHEMA>
+<DESCRIPTION>
 Include this block when ending a testing session mid-investigation.
 It allows the GPT to resume the exact research context in the next session.
-
-SUSPENSION_POINT_PACKET
+</DESCRIPTION>
 date=[YYYY-MM-DD HH:MM UTC]
 focus=[short topic title, e.g. 'SCP Trait-slot Mapping']
 open_questions=[
@@ -42,15 +40,13 @@ open_questions=[
 ]
 recommended_resume_query="[natural language query to continue investigation]"
 session_super_packet=SCP_SUPER_PACKET_V1.0
-======================
-
-TEMPLATE_END
+</SUSPENSION_POINT_PACKET_SCHEMA>
 
 ---
 
-# SECTION_ID: DISCOVERY_LOG
+# SECTION_ID: DISCOVERIES
 
-### Discovery Log Entry
+<DISCOVERY_LOG_ENTRY>
 Date: 2025-11-17 00:32 UTC
 Patch Version: SCP Scenario – Release Branch (v0.25.6, validated 2025-11)
 Scenario: SCP – Survive, Capture, Preserve
@@ -76,15 +72,18 @@ Sources:
 Notes:
 - Structural impossibility of classic dungeon routes has been validated through scenario-level feature removal in SCP.
 - Trait-slot mapping for SCP-only traits and any link between Mood/Deviant Power and Psi or cooldown behavior remain open questions pending controlled testing.
+</DISCOVERY_LOG_ENTRY>
 
 --- 
 
 # SECTION_ID: SESSION_CONTINUITY_SYSTEM
 
+<DESCRIPTION>
 This section stores the permanent methodological framework and restoration packets
 for Once Human Research Lab. It is semi-static—update only when a new packet version
 is issued. The GPT will reference this section only for framework recovery and
 session resumption; it will never modify verified findings above.
+</DESCRIPTION>
 
 ----------------------
 RESURRECTION_PACKET_V1.1
@@ -162,13 +161,43 @@ mode=live_verification
 template_enforcement=true
 context_scope=SCP_only
 resume_system=Suspension_Point_Enabled
-======================
 
+---
 
+# SECTION_ID: CONVERSATIONAL_PROMPT_LABELS
 
+🧩 Reasoning Control Labels
+| Label              | Purpose                                                                        | Example Use                                                       |
+| ------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| **`[VERIFY]`**     | Request factual cross-checking against multiple community or official sources. | `[VERIFY] Is the Chaos Pyro Dino still drop-locked post 1.0.5?`   |
+| **`[TRACE]`**      | Directs it to trace origin or timeline of a mechanic, variant, or bug.         | `[TRACE] the first mention of Chaos Alloy Fusion.`                |
+| **`[CONTRAST]`**   | Forces comparison between sources (e.g., Reddit vs Wiki).                      | `[CONTRAST] Reddit findings vs patch notes for boss mutations.`   |
+| **`[DEDUCE]`**     | Encourages inference from partial or anecdotal data.                           | `[DEDUCE] likely vendor location based on Secure-O-Dex mentions.` |
+| **`[MAP]`**        | Triggers spatial or relational reasoning (NPCs, coordinates, spawn paths).     | `[MAP] Arena vendor locations tied to genetic code purchases.`    |
+| **`[CHAIN]`**      | Requests sequential logic reasoning (how A leads to B).                        | `[CHAIN] steps needed to reach fusion state for Chaos variants.`  |
+| **`[ISOLATE]`**    | Directs focus on one variable, ignoring others.                                | `[ISOLATE] Chaos Pyro Dino genetic code drop sources only.`       |
+| **`[SYNTHESIZE]`** | Combine multiple incomplete sources into one coherent hypothesis.              | `[SYNTHESIZE] community findings on Chaos Tier fusion limits.`    |
+| **`[REFUTE]`**     | Look for contradictions or disproof.                                           | `[REFUTE] claim that Pyro Dino is obtainable from world bosses.`  |
+| **`[PROJECT]`**    | Forecast based on current patch trends (safe speculative mode).                | `[PROJECT] what next patch might do to Chaos-tier vendor limits.` |
 
+🧪 Mode Management & Reasoning Depth
+| Label                       | Effect                                                            |
+| --------------------------- | ----------------------------------------------------------------- |
+| **`[STRICT]`**              | Enforces factual-only mode; no inference or synthesis.            |
+| **`[INFERENTIAL]`**         | Allows reasoned speculation and hypothesis labeling.              |
+| **`[DEEP]`**                | Forces multi-step reasoning chains or meta-analysis.              |
+| **`[BROAD]`**               | Expands search and synthesis scope beyond immediate topic.        |
+| **`[FOCUSED]`**             | Limits reasoning to the immediate context or specified entities.  |
+| **`[TEMPORAL]`**            | Directs reasoning to compare patch-to-patch evolution of data.    |
 
+📜 Chronicle & Archival Labels
+| Label                       | Purpose                                                          |
+| --------------------------- | ---------------------------------------------------------------- |
+| **`[LOG]`**                 | Generate Chronicle Mode output for archival.                     |
+| **`[ANNOTATE]`**            | Add clarifying context without creating a full Chronicle.        |
+| **`[SUSPEND]`**             | Create a suspension point or partial Chronicle packet.           |
+| **`[CATALOG]`**             | Build structured lists (e.g., variant tables, vendor datasets).  |
+| **`[CORRELATE]`**           | Link entries across Chronicles or Secure-O-Dex references.       |
 
-
-
+---
 
